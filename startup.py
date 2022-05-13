@@ -29,7 +29,6 @@ wave_gen_bykeyboard.realtime_anime(win,win.actors[1])#对图形窗口实时输�
 import animation # Noncompliant
 anime = animation.animation(win)#用于目标窗口的播放
 import label_gen # Noncompliant
-from label_gen import * # Noncompliant
 input_X = wave_gen_bykeyboard.WAVE_RECORD
 cursor_X = wave_gen_bykeyboard.WAVE_RECORD_CURSOR
 label_gen.btn_gen_label_init(win)
