@@ -1,12 +1,9 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from MainWindow import Ui_MainWindow
 import sys
 import os
 code_path = "./code/"
 os.chdir(code_path)
-with open(code_path+'ui_layout.py', encoding='utf-8') as code:
-    exec_code = code.read()
-    exec(exec_code)
+from ui_layout import Ui_MainWindow
 app = QApplication(sys.argv) 
 win = Ui_MainWindow()
 qwin = QMainWindow()
@@ -27,10 +24,10 @@ from wave_gen_bykeyboard import * # Noncompliant
 #初始化实时键盘数据流
 wave_gen = wave_gen()
 #已导入WAVE_RECORD和WAVE_RECORD_CURSOR
-realtime_show(win.textBrowser_2)#对文字窗口实时输出
-realtime_anime(win,win.actors[1])#对图形窗口实时输出
-from animation import *  # Noncompliant
-anime = animation(win)#用于目标窗口的播放
+wave_gen_bykeyboard.realtime_show(win.textBrowser_2)#对文字窗口实时输出
+wave_gen_bykeyboard.realtime_anime(win,win.actors[1])#对图形窗口实时输出
+import animation # Noncompliant
+anime = animation.animation(win)#用于目标窗口的播放
 import label_gen # Noncompliant
 from label_gen import * # Noncompliant
 input_X = wave_gen_bykeyboard.WAVE_RECORD

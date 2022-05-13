@@ -1,4 +1,3 @@
-from tkinter import CURRENT
 import numpy as np
 
 RandomSamplingDiff = np.zeros((100),dtype=float)
@@ -201,7 +200,7 @@ def btn_gen_label_init(Qwin):
         label = _lg.getLabel() if strategy == '距离最大化' else _getrandom()
         label = numericalregularization(label,demical_reg)
         label = partionregularization(label,partion_reg)
-        for l in range(len(label)):
+        for l in enumerate(label):
             Qwin.textBrowser_6.insertPlainText("目标标签:")
             _l = label[l].reshape(1,6)
             Qwin.textBrowser_6.insertPlainText(\
@@ -219,7 +218,7 @@ def bth_create_task_init(Qwin):
     global CREATE_TASK_WIN
     CREATE_TASK_WIN = Qwin
     def btn_create_task():
-        global TASK_TABLE,TASK_CURSOR,CURRENT_TASK,CREATE_TASK_WIN
+        global TASK_TABLE,TASK_CURSOR,CREATE_TASK_WIN
         task_name = int(CREATE_TASK_WIN.comboBox_2.currentText())
         TASK_CURSOR = task_name
         TASK_TABLE[task_name-1] = LABELGEN_TEMP
@@ -275,7 +274,7 @@ def btn_end_task_init(Qwin):
             #input_X为Nx6向量
             pairs[i].x = input_X[store_cursor_X+i]
         #这里假定TASK_TABLE[TASK_CURSOR]为6X1向量，暂时不考虑组合正则化
-        if(type(TASK_TABLE[TASK_CURSOR]) == np.ndarray):
+        if(isinstance(TASK_TABLE[TASK_CURSOR]) == np.ndarray):
             y_label_interval = TASK_TABLE[TASK_CURSOR]/range_x
         else:
             #切分y为小段

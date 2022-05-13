@@ -91,8 +91,6 @@ def start_flow(model,optim_type='SGD',learning_rate=0.005):
     global TRAIN_FLOW
     #设置游标
     flow_cursor = int(0)
-    #设置优化器
-    optim_list = []
     if(optim_type == 'SGD'):
         optimizer = optim.SGD(model.parameters(),lr=learning_rate)
     elif(optim_type == 'Adam') :
