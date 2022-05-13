@@ -1,6 +1,4 @@
-from random import shuffle
 from tkinter import CURRENT
-from matplotlib.style import available
 import numpy as np
 
 RandomSamplingDiff = np.zeros((100),dtype=float)
@@ -13,6 +11,12 @@ _getrandom = lambda : np.random.uniform(-1,1,(1,6))
 
 #迭代器可迭代提供标签数值
 class LabelEnumerator(object):
+    """
+    Implements a iterator for generating label via Distance Maximum Strategy
+    :param range_min: the minimum value of the label's boundary
+    :param range_max: the maximum value of the label's boundary
+    :return: a iterator for generating label
+    """
     def __init__(self,range_min,range_max):
         self.get_bound = lambda sbit : range_min if int(sbit) == 0 else range_max
         self._features_num = 6
@@ -34,6 +38,10 @@ class LabelEnumerator(object):
             raise StopIteration
 
 class LabelGen(object):
+    """
+    Implements Algorithm of Distance Maximum Generator of the paper.
+    :return: (ndarray6X1)a label vector
+    """
     def __init__(self):
         self._LabelSet_MaxLength,self._Features_num = 1000,6 #标签集大小和输出特征空间大小
         self.y_label = np.zeros((self._LabelSet_MaxLength,self._Features_num),dtype='float')
@@ -243,6 +251,13 @@ def btn_reset_task_init(Qwin):
     return
 
 class pair(object):
+    """
+    A pair of two elements
+    :param x: the first element
+    :param y: the second element
+    :val x: the first element
+    :val y: the second element
+    """
     def __init__(self,x,y):
         self.x = x
         self.y = y

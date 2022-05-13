@@ -5,9 +5,16 @@ from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
 import pyqtgraph as pg
 
-path = "D:/360MoveData/Users/Lenovo8/Documents/validator_res/"
+code_path = "D:/360MoveData/Users/Lenovo8/Documents/validator_res/code/"
 
 class Ui_MainWindow(object):
+    """
+    Initialize the VTK scene for external methods to access VTK obejct.
+    :type actors: list consisted of vtkActor
+    :param actors: actors to be added to the scene
+    :type ren: list consisted of vtkRenderer
+    :param ren: renderer to be added to the scene
+    """
     def __init__(self):
         self.actors = []#0为target,1为realtime
         self.ren = []#0为target,1为realtime
@@ -22,7 +29,7 @@ class Ui_MainWindow(object):
         font.setFamily("微软雅黑")
         font.setPointSize(10)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(path+"main.ico"),QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(code_path+"../resources/main.ico"),QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.tabWidget.setFont(font)
         self.tabWidget.setObjectName("tabWidget")
@@ -327,7 +334,7 @@ class Ui_MainWindow(object):
         return
     def CreateBody(self,renderer):
         #读取手柄文件
-        ObjFile = path + "vive.obj"
+        ObjFile = code_path + "../resources/vive.obj"
         reader = vtk.vtkOBJReader()
         reader.SetFileName(ObjFile)
         reader.Update()

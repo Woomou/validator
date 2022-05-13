@@ -1,9 +1,7 @@
-from cProfile import label
 import numpy as np
 import time
 import threading
 import keyboard
-import pyqtgraph as pg
 MAX_FLOW_LEN = 6000 - 1
 #FLOW保存每0.01s=10ms发生的键盘变动值，共1min，长度为6_000
 FLOW = np.zeros((MAX_FLOW_LEN,6),dtype=float)
@@ -52,6 +50,12 @@ def _refresh():
         time.sleep(0.015)
 
 class wave_gen():
+    """
+    Startup the global real-time event data-stream.
+    :type thread_timer: thread of "FLOW"
+    :type thread_spliter: thread of "WAVE"
+    :type thread_wave: thread of "WAVE_RECORD"
+    """
     def __init__(self):
         global _timer,_spliter,_refresh
         #0.01s定时器，统计一段时间内发生的键盘数变动，每两段时间点之差值即为所求

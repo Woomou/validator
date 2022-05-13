@@ -5,6 +5,15 @@ RESOLUTION = 200
 
 #该类播放固定一个任务的动画
 class animation(object):
+    """
+    Implement the animation effect.
+    :param Qwin: The Qwindow object of broadcasting animation.
+    :param actor: The VTK actor object of QWindow.
+    :param label: The target state space label.
+    :type Qwin: QWindow
+    :type actor: vtkActor
+    :type label: ndarray 6X1
+    """
     def __init__(self,Qwin):
         self.Qwin = Qwin
         self.broadcast = False#停止播放信号

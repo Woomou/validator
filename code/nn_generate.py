@@ -1,22 +1,20 @@
-import imp
-from pickletools import optimize
 from time import time
 from numpy import double
-from pyrsistent import T
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
-import torch.nn.functional as F
 import torch.optim as optim
-import torchvision.transforms as transforms
-import torchvision.datasets as datasets
-import matplotlib.pyplot as plt
-import gc
-import time
 import threading
 import random
+import gc
 
 class Net(nn.Module):
+    """
+    Override and Allow User to define A customized network architecture
+    :param hidden_size: the input width and output width of hidden layer
+    :param hidden_num: the number of hidden layers
+    :return Net: a hidden-layer-customized network
+    """
     def __init__(self,hidden_size,hidden_num):
         super().__init__()
         self.input_layer = nn.Linear(6,hidden_size)
@@ -80,6 +78,7 @@ def nn_train(model,optimizer,criterion,batches):
     torch.cuda.empty_cache()
     loss.backward()
     optimizer.step()
+    gc.collect()
     return double(loss.data)
 
 LOSS_FLOW = []
