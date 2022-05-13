@@ -9,6 +9,7 @@ import random
 import gc
 
 class Net(nn.Module):
+
     """
     Override and Allow User to define A customized network architecture
     :param hidden_size: the input width and output width of hidden layer

@@ -1,10 +1,10 @@
 #统一处理所有波形窗口
 from array import array
-import pyqtgraph as pg
 import numpy as np
 import pyqtgraph as pg
 
 class wave_startup():
+
     """
     Implements the specified waveform 's initialization work.
     :param plot: The waveform to be initialized.
@@ -65,6 +65,7 @@ class wave_startup():
 
 
 class wave_open(object):
+
     """
     Initialize the data-stream and ploting of wave graph.
     :param Qwin: The top parent Qwindow of wave graph.

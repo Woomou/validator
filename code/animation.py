@@ -5,6 +5,7 @@ RESOLUTION = 200
 
 #该类播放固定一个任务的动画
 class animation(object):
+
     """
     Implement the animation effect.
     :param Qwin: The Qwindow object of broadcasting animation.

@@ -11,6 +11,7 @@ _getrandom = lambda : np.random.uniform(-1,1,(1,6))
 
 #迭代器可迭代提供标签数值
 class LabelEnumerator(object):
+
     """
     Implements a iterator for generating label via Distance Maximum Strategy
     :param range_min: the minimum value of the label's boundary
@@ -38,6 +39,7 @@ class LabelEnumerator(object):
             raise StopIteration
 
 class LabelGen(object):
+
     """
     Implements Algorithm of Distance Maximum Generator of the paper.
     :return: (ndarray6X1)a label vector

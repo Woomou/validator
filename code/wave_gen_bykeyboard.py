@@ -50,6 +50,7 @@ def _refresh():
         time.sleep(0.015)
 
 class wave_gen():
+
     """
     Startup the global real-time event data-stream.
     :type thread_timer: thread of "FLOW"
